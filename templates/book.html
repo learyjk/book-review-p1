@@ -1,0 +1,46 @@
+{% extends "layout.html" %}
+
+{% block heading %}
+    <u>{{book.title}}</u>
+{% endblock %}
+
+{% block content %}
+    <p>
+    <h5>By: {{book.author}}</h5>
+    <h6>ISBN: {{book.isbn}}; {{book.year}}</h6>
+
+{% if reviewed %}
+    You've already reviewed this book!
+{% else %}
+    <form action="{{ url_for('book', isbn=book.isbn) }}" method="post">
+        <div class="form-group">
+            <select class="form-control" name="rating">
+                <option selected="true" disabled="disabled">Select Rating:</option>
+                <option value=1>1</option>
+                <option value=2>2</option>
+                <option value=3>3</option>
+                <option value=4>4</option>
+                <option value=5>5</option>
+            </select>
+            <br>
+            <textarea autocomplete="off" autofocus class="form-control" name="review" placeholder="Enter your review here" rows="5"></textarea>
+        </div>
+            <button class="btn btn-primary" type="submit">Submit Review</button>
+    </form>
+{% endif %}
+<br>
+<br>
+There are {{reviews|count}} reviews for <u>{{book.title}}</u> for an average rating of {{average}}
+<br>
+Goodreads has {{goodreads.work_ratings_count}} reviews for an average rating of {{goodreads.average_rating}}.
+<br>
+<br>
+
+{% for review in reviews %}
+    <h4>Review by <u>{{review.username}}</u></h4>
+    <i><font class="text-muted">Date: {{review.created_at.strftime("%B %d, %Y %H:%M")}}</font></i><p>
+    {{review.review_text}}
+    <p>
+{% endfor %}
+
+{% endblock %}
