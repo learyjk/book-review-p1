@@ -1,6 +1,6 @@
 import os
 import requests
-import config.py
+import config
 from flask import Flask, session, request, render_template, redirect, url_for, jsonify
 from flask_session import Session
 from sqlalchemy import create_engine
