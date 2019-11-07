@@ -1,5 +1,6 @@
 import os
 import requests
+import config
 from flask import Flask, session, request, render_template, redirect, url_for, jsonify
 from flask_session import Session
 from sqlalchemy import create_engine
@@ -23,7 +24,7 @@ engine = create_engine(os.getenv("DATABASE_URL"), echo=True)
 db = scoped_session(sessionmaker(bind=engine))
 
 # Set up API
-API_KEY = "5gLUrFuiEtUtGBkFF0ihuw"
+API_KEY = config.API_KEY
 
 
 @app.route("/")
