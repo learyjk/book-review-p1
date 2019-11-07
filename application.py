@@ -1,6 +1,5 @@
 import os
 import requests
-import config
 from flask import Flask, session, request, render_template, redirect, url_for, jsonify
 from flask_session import Session
 from sqlalchemy import create_engine
@@ -13,6 +12,8 @@ app = Flask(__name__)
 # Check for environment variable
 if not os.getenv("DATABASE_URL"):
     raise RuntimeError("DATABASE_URL is not set")
+if not os.getenv("API_KEY"):
+    raise RuntimeError("API_KEY is not set")
 
 # Configure session to use filesystem
 app.config["SESSION_PERMANENT"] = False
@@ -24,7 +25,7 @@ engine = create_engine(os.getenv("DATABASE_URL"), echo=True)
 db = scoped_session(sessionmaker(bind=engine))
 
 # Set up API
-API_KEY = config.API_KEY
+API_KEY = os.getenv("API_KEY")
 
 
 @app.route("/")
