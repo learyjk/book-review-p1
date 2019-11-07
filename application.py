@@ -30,7 +30,10 @@ API_KEY = os.getenv("API_KEY")
 
 @app.route("/")
 def index():
-    return render_template("search.html")
+    if session['user_id']:
+        return render_template("search.html")
+    else:
+        redirect("/login")
 
 
 @app.route("/register", methods=["GET", "POST"])
