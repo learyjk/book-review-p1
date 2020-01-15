@@ -1,10 +1,15 @@
-# Project 1
+# Project 1 Book Review
 
-Web Programming with Python and JavaScript
-Project Description Here:
+CS50 Web Programming with Python and JavaScript
+
+This is a book review website to satisfy the requirements for CS50 Web Project 1.  Users can log in and search for titles to leave reviews and read reviews by others.  Additionally, it utilizes the Goodreads API to pull reviews from a larger sample size.
+
+The purpose of this project is to further familiarize myself with Flask, Python, Postgres database and SQL commands, Heroku deployments, and APIs.  As mentioned above, it pulls data from the Goodreads API and also generates its own API data when a user sends a GET request to: https://book-review-50.herokuapp.com/api/<insert ISBN>
+
+Project Requirements Here:
 https://docs.cs50.net/ocw/web/projects/1/project1.html
 
-Heroku Deployment:
+Heroku Deployment Live Link:
 https://book-review-50.herokuapp.com/
 
 YouTube Screencast:
@@ -12,10 +17,3 @@ https://youtu.be/D_bhRUREgPc
 
 GitHub:
 https://github.com/learyjk/book-review-p1
-
-Basic website to gain more experience with Python and Flask using SQL to interact with a database.  Additionally, just getting started with APIs so use Goodreads API to pull some data about a book (reviews) as well as make provide my own API data when a user sends a get request using
-https://book-review-50.herokuapp.com/api/<insert ISBN>
-
-Future improvements:
-1. UI enhancement.  Especially the HTML forms that span the whole page.
-2. Data validation/requirements.  Yes, this web app will let you use a 1 character password and fake email addresses.  If it's that bad I imagine it gets worse but hey it meets the project spec.
